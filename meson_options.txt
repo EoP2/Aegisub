@@ -6,12 +6,12 @@ option('directsound', type: 'feature', description: 'DirectSound audio output')
 option('default_audio_output', type: 'combo', choices: ['auto', 'ALSA', 'OpenAL', 'PulseAudio', 'PortAudio', 'DirectSound'], description: 'Default audio output')
 
 option('ffms2', type: 'feature', description: 'FFMS2 video source')
-option('avisynth', type: 'feature', description: 'AviSynth video source')
+option('avisynth', type: 'feature', value: 'disabled', description: 'AviSynth video source')
 
 option('fftw3', type: 'feature', description: 'FFTW3 support')
 option('hunspell', type: 'feature', value: 'disabled', description: 'Hunspell spell checker')
 option('uchardet', type: 'feature', description: 'uchardet character encoding detection')
-option('csri', type: 'feature', description: 'CSRI support')
+option('csri', type: 'feature', value: 'disabled', description: 'CSRI support')
 
 option('system_luajit', type: 'boolean', value: false, description: 'Force using system luajit')
 option('local_boost', type: 'boolean', value: false, description: 'Force using locally compiled Boost')

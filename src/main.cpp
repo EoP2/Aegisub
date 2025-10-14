@@ -173,11 +173,11 @@ bool AegisubApp::OnInit() {
 	}
 #endif
 
-	StartupLog("Create log writer");
+	/* StartupLog("Create log writer");
 	auto path_log = config::path->Decode("?user/log/");
 	agi::fs::CreateDirectory(path_log);
 	agi::log::log->Subscribe(std::make_unique<agi::log::JsonEmitter>(path_log));
-	CleanCache(path_log, "*.json", 10, 100);
+	CleanCache(path_log, "*.json", 10, 100); */
 
 	StartupLog("Load user configuration");
 	try {

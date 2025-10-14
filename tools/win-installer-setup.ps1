@@ -24,22 +24,22 @@ if (Test-Path 'Env:GITHUB_TOKEN') {
 }
 
 # DepCtrl
-if (!(Test-Path DependencyControl)) {
-	git clone https://github.com/TypesettingTools/DependencyControl.git
-	Set-Location DependencyControl
-	git checkout v0.6.3-alpha
-	Set-Location $DepsDir
-}
+# if (!(Test-Path DependencyControl)) {
+# 	git clone https://github.com/TypesettingTools/DependencyControl.git
+# 	Set-Location DependencyControl
+# 	git checkout v0.6.3-alpha
+# 	Set-Location $DepsDir
+# }
 
 # YUtils
-if (!(Test-Path YUtils)) {
-	git clone https://github.com/TypesettingTools/YUtils.git
-}
+# if (!(Test-Path YUtils)) {
+# 	git clone https://github.com/TypesettingTools/YUtils.git
+# }
 
 # luajson
-if (!(Test-Path luajson)) {
-	git clone https://github.com/harningt/luajson.git
-}
+# if (!(Test-Path luajson)) {
+# 	git clone https://github.com/harningt/luajson.git
+# }
 
 # Avisynth
 # if (!(Test-Path AviSynthPlus64)) {
@@ -64,41 +64,41 @@ if (!(Test-Path VSFilter)) {
 }
 
 # ffi-experiments
-if (!(Test-Path ffi-experiments)) {
-	Get-Command "moonc" # check to ensure Moonscript is present
-	git clone https://github.com/TypesettingTools/ffi-experiments.git
-	Set-Location ffi-experiments
-	meson build -Ddefault_library=static
-	if(!$?) { Exit $LASTEXITCODE }
-	meson compile -C build
-	if(!$?) { Exit $LASTEXITCODE }
-	Set-Location $DepsDir
-}
+# if (!(Test-Path ffi-experiments)) {
+# 	Get-Command "moonc" # check to ensure Moonscript is present
+# 	git clone https://github.com/TypesettingTools/ffi-experiments.git
+# 	Set-Location ffi-experiments
+# 	meson build -Ddefault_library=static
+# 	if(!$?) { Exit $LASTEXITCODE }
+# 	meson compile -C build
+# 	if(!$?) { Exit $LASTEXITCODE }
+# 	Set-Location $DepsDir
+# }
 
 # VC++ redistributable
-if (!(Test-Path VC_redist)) {
-	$redistDir = New-Item -ItemType Directory VC_redist
-	Invoke-WebRequest https://aka.ms/vs/17/release/VC_redist.x64.exe -OutFile "$redistDir\VC_redist.x64.exe" -UseBasicParsing
-}
+# if (!(Test-Path VC_redist)) {
+# 	$redistDir = New-Item -ItemType Directory VC_redist
+# 	Invoke-WebRequest https://aka.ms/vs/17/release/VC_redist.x64.exe -OutFile "$redistDir\VC_redist.x64.exe" -UseBasicParsing
+# }
 
 # Dictionaries
-if (!(Test-Path dictionaries)) {
-	New-Item -ItemType Directory dictionaries
-	Invoke-WebRequest https://raw.githubusercontent.com/TypesettingTools/Aegisub-dictionaries/master/dicts/en_US.aff -OutFile dictionaries/en_US.aff -UseBasicParsing
-	Invoke-WebRequest https://raw.githubusercontent.com/TypesettingTools/Aegisub-dictionaries/master/dicts/en_US.dic -OutFile dictionaries/en_US.dic -UseBasicParsing
-}
+# if (!(Test-Path dictionaries)) {
+# 	New-Item -ItemType Directory dictionaries
+# 	Invoke-WebRequest https://raw.githubusercontent.com/TypesettingTools/Aegisub-dictionaries/master/dicts/en_US.aff -OutFile dictionaries/en_US.aff -UseBasicParsing
+# 	Invoke-WebRequest https://raw.githubusercontent.com/TypesettingTools/Aegisub-dictionaries/master/dicts/en_US.dic -OutFile dictionaries/en_US.dic -UseBasicParsing
+# }
 
 # Installer localization
 if (!(Test-Path innosetup-langs)) {
 	New-Item -ItemType Directory innosetup-langs
-	Invoke-WebRequest https://raw.github.com/jrsoftware/issrc/main/Files/Languages/Unofficial/Greek.isl -OutFile innosetup-langs/Greek.isl -UseBasicParsing
-	Invoke-WebRequest https://raw.github.com/jrsoftware/issrc/main/Files/Languages/Unofficial/Basque.isl -OutFile innosetup-langs/Basque.isl -UseBasicParsing
-	Invoke-WebRequest https://raw.github.com/jrsoftware/issrc/main/Files/Languages/Unofficial/Galician.isl -OutFile innosetup-langs/Galician.isl -UseBasicParsing
-	Invoke-WebRequest https://raw.github.com/jrsoftware/issrc/main/Files/Languages/Unofficial/Indonesian.isl -OutFile innosetup-langs/Indonesian.isl -UseBasicParsing
-	Invoke-WebRequest https://raw.github.com/jrsoftware/issrc/main/Files/Languages/Unofficial/SerbianCyrillic.isl -OutFile innosetup-langs/SerbianCyrillic.isl -UseBasicParsing
-	Invoke-WebRequest https://raw.github.com/jrsoftware/issrc/main/Files/Languages/Unofficial/SerbianLatin.isl -OutFile innosetup-langs/SerbianLatin.isl -UseBasicParsing
+# 	Invoke-WebRequest https://raw.github.com/jrsoftware/issrc/main/Files/Languages/Unofficial/Greek.isl -OutFile innosetup-langs/Greek.isl -UseBasicParsing
+# 	Invoke-WebRequest https://raw.github.com/jrsoftware/issrc/main/Files/Languages/Unofficial/Basque.isl -OutFile innosetup-langs/Basque.isl -UseBasicParsing
+# 	Invoke-WebRequest https://raw.github.com/jrsoftware/issrc/main/Files/Languages/Unofficial/Galician.isl -OutFile innosetup-langs/Galician.isl -UseBasicParsing
+# 	Invoke-WebRequest https://raw.github.com/jrsoftware/issrc/main/Files/Languages/Unofficial/Indonesian.isl -OutFile innosetup-langs/Indonesian.isl -UseBasicParsing
+# 	Invoke-WebRequest https://raw.github.com/jrsoftware/issrc/main/Files/Languages/Unofficial/SerbianCyrillic.isl -OutFile innosetup-langs/SerbianCyrillic.isl -UseBasicParsing
+# 	Invoke-WebRequest https://raw.github.com/jrsoftware/issrc/main/Files/Languages/Unofficial/SerbianLatin.isl -OutFile innosetup-langs/SerbianLatin.isl -UseBasicParsing
 	Invoke-WebRequest https://raw.github.com/jrsoftware/issrc/main/Files/Languages/Unofficial/ChineseSimplified.isl -OutFile innosetup-langs/ChineseSimplified.isl -UseBasicParsing
-	Invoke-WebRequest https://raw.github.com/jrsoftware/issrc/main/Files/Languages/Unofficial/ChineseTraditional.isl -OutFile innosetup-langs/ChineseTraditional.isl -UseBasicParsing
+# 	Invoke-WebRequest https://raw.github.com/jrsoftware/issrc/main/Files/Languages/Unofficial/ChineseTraditional.isl -OutFile innosetup-langs/ChineseTraditional.isl -UseBasicParsing
 }
 
 # Aegisub localization
